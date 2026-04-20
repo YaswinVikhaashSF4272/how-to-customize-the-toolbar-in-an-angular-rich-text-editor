@@ -1,10 +1,14 @@
 import { Component} from '@angular/core';
-import { QuickToolbarSettingsModel } from '@syncfusion/ej2-angular-richtexteditor';
+import { QuickToolbarSettingsModel,ToolbarService, LinkService, ImageService, HtmlEditorService, TableService,
+    QuickToolbarService,RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  standalone: true,
+  providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, TableService,
+    QuickToolbarService],
+  imports: [RichTextEditorModule]
 })
 export class AppComponent {
   title = 'angular-richtexteditor';

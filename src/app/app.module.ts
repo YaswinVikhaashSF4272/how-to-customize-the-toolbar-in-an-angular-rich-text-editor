@@ -6,13 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RichTextEditorModule
+    RichTextEditorModule , AppComponent
   ],
   providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, TableService,
     QuickToolbarService],

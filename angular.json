@@ -8,22 +8,15 @@
   "projects": {
     "angular-richtexteditor": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/angular-richtexteditor",
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -40,7 +33,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -57,9 +50,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -69,12 +60,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "angular-richtexteditor:build"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "angular-richtexteditor:build:production"
+              "buildTarget": "angular-richtexteditor:build:production"
             },
             "development": {
-              "browserTarget": "angular-richtexteditor:build:development"
+              "buildTarget": "angular-richtexteditor:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-richtexteditor:build"
+            "buildTarget": "angular-richtexteditor:build"
           }
         },
         "test": {
@@ -105,5 +99,4 @@
       }
     }
   },
-  "defaultProject": "angular-richtexteditor"
 }
